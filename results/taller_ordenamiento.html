@@ -8423,17 +8423,29 @@ Merge y quicksort corren todos los tamaños.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Midiendo cada algoritmo con n = 2000 (una corrida)...
-  Inserción  : 0.0677 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : 0.1601 s
-  Selección  : 0.0687 s
-  Merge sort : 0.0032 s
-  Quicksort  : 0.0025 s
+<pre>  Inserción  : 0.0863 s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  Burbuja    : 0.2089 s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  Selección  : 0.0869 s
+  Merge sort : 0.0038 s
+  Quicksort  : 0.0031 s
 
 Estimación de tiempo por corrida (segundos) para el MODO COMPLETO,
 límite MAX_SEGUNDOS_POR_CORRIDA = 1000000000000 s:
@@ -8483,53 +8495,53 @@ límite MAX_SEGUNDOS_POR_CORRIDA = 1000000000000 s:
 <tbody>
 <tr>
 <th>Inserción</th>
-<td>0.00</td>
+<td>0.01</td>
 <td>0.02</td>
-<td>1.69</td>
-<td>15.24</td>
-<td>42.34</td>
-<td>169.36</td>
-<td>677.43</td>
+<td>2.16</td>
+<td>19.42</td>
+<td>53.95</td>
+<td>215.79</td>
+<td>863.16</td>
 </tr>
 <tr>
 <th>Burbuja</th>
 <td>0.01</td>
-<td>0.04</td>
-<td>4.00</td>
-<td>36.01</td>
-<td>100.03</td>
-<td>400.14</td>
-<td>1600.56</td>
+<td>0.05</td>
+<td>5.22</td>
+<td>47.01</td>
+<td>130.58</td>
+<td>522.33</td>
+<td>2089.33</td>
 </tr>
 <tr>
 <th>Selección</th>
-<td>0.00</td>
+<td>0.01</td>
 <td>0.02</td>
-<td>1.72</td>
-<td>15.47</td>
-<td>42.96</td>
-<td>171.85</td>
-<td>687.39</td>
+<td>2.17</td>
+<td>19.55</td>
+<td>54.32</td>
+<td>217.27</td>
+<td>869.09</td>
 </tr>
 <tr>
 <th>Merge sort</th>
 <td>0.00</td>
 <td>0.00</td>
 <td>0.02</td>
-<td>0.06</td>
-<td>0.11</td>
-<td>0.24</td>
-<td>0.51</td>
+<td>0.08</td>
+<td>0.14</td>
+<td>0.29</td>
+<td>0.62</td>
 </tr>
 <tr>
 <th>Quicksort</th>
 <td>0.00</td>
 <td>0.00</td>
 <td>0.02</td>
-<td>0.05</td>
-<td>0.09</td>
-<td>0.19</td>
-<td>0.40</td>
+<td>0.06</td>
+<td>0.11</td>
+<td>0.23</td>
+<td>0.49</td>
 </tr>
 </tbody>
 </table>
@@ -8565,6 +8577,14 @@ una celda por cada tamaño; cada celda llama a <code>ejecutar_prueba(n)</code>, 
 <li><strong>guarda el avance</strong> en <code>results/tiempos.csv</code> apenas termina cada combinación.</li>
 </ul>
 <p>Se pueden ejecutar todas las celdas seguidas (con <em>Run All</em>) o una por una en VS Code.</p>
+<blockquote>
+<p><strong>Sobre esta corrida.</strong> El experimento se ejecutó en modo completo y, tras una
+interrupción externa del equipo, se <strong>reanudó</strong> desde <code>results/tiempos.csv</code> con
+<code>REANUDAR = True</code>. Por eso algunas combinaciones ya estaban completas: sus cinco
+tiempos se muestran recuperados del CSV en lugar de volver a cronometrarse. En total
+son <strong>175 mediciones reales</strong> (5 algoritmos × 7 tamaños × 5 repeticiones), sin omitir
+ninguna combinación.</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -8621,7 +8641,10 @@ una celda por cada tamaño; cada celda llama a <code>ejecutar_prueba(n)</code>, 
 
         <span class="n">ya</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filas</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">"algoritmo"</span><span class="p">]</span> <span class="o">==</span> <span class="n">nombre</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ya</span> <span class="o">&gt;=</span> <span class="n">REPETICIONES_RUN</span><span class="p">:</span>
-            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">NOMBRES</span><span class="p">[</span><span class="n">nombre</span><span class="p">]</span><span class="si">:</span><span class="s2">11s</span><span class="si">}</span><span class="s2">: ya completado (</span><span class="si">{</span><span class="n">ya</span><span class="si">}</span><span class="s2"> mediciones), se omite"</span><span class="p">)</span>
+            <span class="n">guardadas</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">"tiempo_s"</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filas</span>
+                         <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">"algoritmo"</span><span class="p">]</span> <span class="o">==</span> <span class="n">nombre</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
+            <span class="n">detalle</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">guardadas</span><span class="p">)</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">NOMBRES</span><span class="p">[</span><span class="n">nombre</span><span class="p">]</span><span class="si">:</span><span class="s2">11s</span><span class="si">}</span><span class="s2">: ya completado (</span><span class="si">{</span><span class="n">ya</span><span class="si">}</span><span class="s2"> mediciones) -&gt; </span><span class="si">{</span><span class="n">detalle</span><span class="si">}</span><span class="s2"> s"</span><span class="p">)</span>
             <span class="k">continue</span>
 
         <span class="n">muestra</span> <span class="o">=</span> <span class="n">DATOS</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
@@ -8655,7 +8678,7 @@ una celda por cada tamaño; cada celda llama a <code>ejecutar_prueba(n)</code>, 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Reanudando: 130 mediciones ya guardadas en /home/ilohu/Python/Estructura_de_datos/talleralgortimos/results/tiempos.csv.
+<pre>Reanudando: 175 mediciones ya guardadas en /home/ilohu/Python/Estructura_de_datos/talleralgortimos/results/tiempos.csv.
 Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 </pre>
 </div>
@@ -8690,35 +8713,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 0.0039, 0.0068, 0.0048, 0.0043, 0.0042 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : ya completado (5 mediciones), se omite
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 0.0132, 0.0089, 0.0090, 0.0112, 0.0096 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección  : ya completado (5 mediciones), se omite
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 0.0063, 0.0060, 0.0076, 0.0070, 0.0047 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort : ya completado (5 mediciones), se omite
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.0012, 0.0007, 0.0019, 0.0013, 0.0012 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort  : ya completado (5 mediciones), se omite
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.0016, 0.0018, 0.0015, 0.0011, 0.0016 s
 </pre>
 </div>
 </div>
@@ -8752,35 +8775,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 0.0273, 0.0182, 0.0210, 0.0215, 0.0278 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : ya completado (5 mediciones), se omite
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 0.0424, 0.0412, 0.0424, 0.0492, 0.0815 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección  : ya completado (5 mediciones), se omite
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 0.0274, 0.0461, 0.0329, 0.0269, 0.0215 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort : ya completado (5 mediciones), se omite
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.0026, 0.0023, 0.0014, 0.0018, 0.0050 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort  : ya completado (5 mediciones), se omite
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.0019, 0.0013, 0.0016, 0.0022, 0.0024 s
 </pre>
 </div>
 </div>
@@ -8814,35 +8837,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 2.5999, 3.2351, 3.5771, 2.7585, 2.4859 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : ya completado (5 mediciones), se omite
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 5.7118, 5.7004, 5.3241, 5.8523, 4.7096 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección  : ya completado (5 mediciones), se omite
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 1.8652, 1.8579, 1.8390, 1.8686, 1.8412 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort : ya completado (5 mediciones), se omite
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.0226, 0.0210, 0.0236, 0.0186, 0.0195 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort  : ya completado (5 mediciones), se omite
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.0161, 0.0153, 0.0150, 0.0183, 0.0139 s
 </pre>
 </div>
 </div>
@@ -8876,35 +8899,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 22.2942, 23.3698, 19.6232, 22.7231, 20.6319 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : ya completado (5 mediciones), se omite
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 51.5862, 52.0398, 46.5779, 53.5758, 51.5998 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección  : ya completado (5 mediciones), se omite
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 20.3098, 19.8786, 23.2258, 18.3729, 19.2383 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort : ya completado (5 mediciones), se omite
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.0703, 0.0746, 0.0642, 0.0641, 0.0658 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort  : ya completado (5 mediciones), se omite
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.0493, 0.0539, 0.0530, 0.0551, 0.0536 s
 </pre>
 </div>
 </div>
@@ -8938,35 +8961,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 56.7516, 56.1992, 62.6800, 56.9824, 56.0993 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja    : ya completado (5 mediciones), se omite
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 134.0835, 121.9671, 116.4979, 109.8295, 112.6239 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección  : ya completado (5 mediciones), se omite
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 45.8691, 45.7725, 45.8508, 45.8440, 45.6177 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort : ya completado (5 mediciones), se omite
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.1117, 0.1170, 0.1094, 0.1163, 0.1195 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort  : ya completado (5 mediciones), se omite
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.0866, 0.0915, 0.0903, 0.0954, 0.0928 s
 </pre>
 </div>
 </div>
@@ -9000,147 +9023,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción  : ya completado (5 mediciones), se omite
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 203.2925, 202.1650, 203.8817, 204.5732, 204.1766 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 1/5: 484.0110 s
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 484.0110, 465.6371, 498.1172, 496.8820, 463.2382 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 2/5: 465.6371 s
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 195.1060, 189.3879, 184.1604, 192.5588, 193.8458 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 3/5: 498.1172 s
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.2298, 0.2415, 0.2431, 0.2438, 0.2417 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 4/5: 496.8820 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 5/5: 463.2382 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 1/5: 195.1060 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 2/5: 189.3879 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 3/5: 184.1604 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 4/5: 192.5588 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 5/5: 193.8458 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 1/5: 0.2298 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 2/5: 0.2415 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 3/5: 0.2431 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 4/5: 0.2438 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 5/5: 0.2417 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 1/5: 0.1893 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 2/5: 0.1906 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 3/5: 0.1969 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 4/5: 0.2020 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 5/5: 0.2058 s
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.1893, 0.1906, 0.1969, 0.2020, 0.2058 s
 </pre>
 </div>
 </div>
@@ -9174,175 +9085,35 @@ Benchmark preparado: una prueba por tamaño, en el orden del enunciado.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción   rep 1/5: 828.5068 s
+<pre>  Inserción  : ya completado (5 mediciones) -&gt; 828.5068, 817.8349, 829.5490, 824.3624, 820.1535 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción   rep 2/5: 817.8349 s
+<pre>  Burbuja    : ya completado (5 mediciones) -&gt; 1865.0535, 1871.4196, 1851.4965, 1853.9872, 1850.2204 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción   rep 3/5: 829.5490 s
+<pre>  Selección  : ya completado (5 mediciones) -&gt; 750.4005, 761.7424, 777.6529, 739.0206, 755.4793 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción   rep 4/5: 824.3624 s
+<pre>  Merge sort : ya completado (5 mediciones) -&gt; 0.5404, 0.5348, 0.5006, 0.5358, 0.4809 s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Inserción   rep 5/5: 820.1535 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 1/5: 1865.0535 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 2/5: 1871.4196 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 3/5: 1851.4965 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 4/5: 1853.9872 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Burbuja     rep 5/5: 1850.2204 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 1/5: 750.4005 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 2/5: 761.7424 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 3/5: 777.6529 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 4/5: 739.0206 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Selección   rep 5/5: 755.4793 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 1/5: 0.5404 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 2/5: 0.5348 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 3/5: 0.5006 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 4/5: 0.5358 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Merge sort  rep 5/5: 0.4809 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 1/5: 0.3926 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 2/5: 0.4415 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 3/5: 0.3988 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 4/5: 0.3967 s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  Quicksort   rep 5/5: 0.3875 s
+<pre>  Quicksort  : ya completado (5 mediciones) -&gt; 0.3926, 0.4415, 0.3988, 0.3967, 0.3875 s
 </pre>
 </div>
 </div>
