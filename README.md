@@ -42,7 +42,8 @@ propia, sin usar `sorted()`, antes del benchmark.
 │   ├── tiempos_loglog.png
 │   ├── tiempos_merge_quick.png
 │   ├── ajustes.png
-│   └── taller_ordenamiento.html # notebook ejecutado, para ver sin Jupyter
+│   ├── taller_ordenamiento.html # notebook ejecutado, para ver sin Jupyter
+│   └── taller_ordenamiento.pdf  # el mismo notebook en PDF (para entregar/imprimir)
 └── notebooks/
     └── taller_ordenamiento.ipynb   # notebook principal
 ```
@@ -96,7 +97,10 @@ jupyter nbconvert --to notebook --execute --inplace \
   `MAX_SEGUNDOS_POR_CORRIDA` muy alto, de modo que los 5 algoritmos corrieron los 7
   tamaños: **175 mediciones** en total.
 - **Reanudación.** `REANUDAR = True` permite continuar desde `results/tiempos.csv` si una
-  ejecución se interrumpe; las combinaciones ya completadas se saltan.
+  ejecución se interrumpe; las combinaciones ya completadas se saltan. En la corrida
+  publicada el notebook se **reanudó** tras una interrupción externa: esas combinaciones
+  muestran sus cinco tiempos recuperados del CSV en lugar de volver a cronometrarse
+  (el total de 175 mediciones es real y no se omitió ninguna).
 - **Guardado parcial.** Cada combinación se escribe en `results/tiempos.csv` al terminar;
   el avance en vivo queda en `results/progreso.log` (útil con `tail -f`).
 
@@ -179,6 +183,7 @@ Gráficas generadas en `results/`:
 |---|---|
 | `notebooks/taller_ordenamiento.ipynb` | entregable principal: 5 algoritmos, validación, benchmark completo (175 mediciones), tablas, gráficas y conclusiones |
 | `results/taller_ordenamiento.html` | el mismo notebook exportado a HTML (se abre en cualquier navegador, sin Jupyter) |
+| `results/taller_ordenamiento.pdf` | el mismo notebook en PDF (19 páginas, listo para imprimir o subir a la plataforma) |
 | `results/tiempos.csv` | las 175 mediciones crudas |
 | `results/promedios.csv` | promedio y desviación por algoritmo y tamaño |
 | `results/ajustes.csv` | comparación de modelos (R², RMSE, pendiente log-log) |
@@ -186,5 +191,6 @@ Gráficas generadas en `results/`:
 | `README.md` | objetivo, metodología, resultados y conclusiones |
 | `data/numeros.txt` | datos (no versionado; se regenera con semilla 42 al ejecutar) |
 
-Para revisar la entrega sin ejecutar nada: abrir `results/taller_ordenamiento.html`.
+Para revisar la entrega sin ejecutar nada: abrir `results/taller_ordenamiento.html` o
+`results/taller_ordenamiento.pdf`.
 Para reproducir el experimento: seguir la sección 4.
