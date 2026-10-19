@@ -1,0 +1,22 @@
+# Entornos virtuales
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs y ejecuciones en segundo plano
+nohup.out
+*.log
+
+# Datos regenerables (semilla 42 -> reproducible)
+data/numeros.txt
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+.DS_Store
