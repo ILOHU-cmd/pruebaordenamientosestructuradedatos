@@ -1,4 +1,10 @@
-# Taller de ordenamiento: comparación empírica de 5 algoritmos en Python
+# Prueba de ordenamientos — Estructura de Datos
+
+Comparación empírica de 5 algoritmos de ordenamiento en Python (inserción, burbuja,
+selección, merge sort y quicksort).
+
+**Entrega:** `pruebaordenamientosestructuradedatos` ·
+https://github.com/ILOHU-cmd/pruebaordenamientosestructuradedatos
 
 ## 1. Título y objetivo
 
