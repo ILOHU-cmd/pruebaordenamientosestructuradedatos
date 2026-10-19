@@ -37,10 +37,12 @@ propia, sin usar `sorted()`, antes del benchmark.
 ├── results/
 │   ├── tiempos.csv              # todas las mediciones (algoritmo, n, repetición, tiempo)
 │   ├── promedios.csv            # promedio y desviación por algoritmo y tamaño
+│   ├── ajustes.csv              # R², RMSE y mejor modelo por algoritmo
 │   ├── tiempos_lineal.png
 │   ├── tiempos_loglog.png
 │   ├── tiempos_merge_quick.png
-│   └── ajustes.png
+│   ├── ajustes.png
+│   └── taller_ordenamiento.html # notebook ejecutado, para ver sin Jupyter
 └── notebooks/
     └── taller_ordenamiento.ipynb   # notebook principal
 ```
@@ -170,3 +172,19 @@ Gráficas generadas en `results/`:
   sesiones distintas (misma configuración y equipo).
 - Merge sort usa memoria auxiliar O(n); quicksort ordena in-place.
 - Los tiempos absolutos dependen del hardware; el interés está en las **tendencias**.
+
+## 9. Archivos para la entrega
+
+| archivo | contenido |
+|---|---|
+| `notebooks/taller_ordenamiento.ipynb` | entregable principal: 5 algoritmos, validación, benchmark completo (175 mediciones), tablas, gráficas y conclusiones |
+| `results/taller_ordenamiento.html` | el mismo notebook exportado a HTML (se abre en cualquier navegador, sin Jupyter) |
+| `results/tiempos.csv` | las 175 mediciones crudas |
+| `results/promedios.csv` | promedio y desviación por algoritmo y tamaño |
+| `results/ajustes.csv` | comparación de modelos (R², RMSE, pendiente log-log) |
+| `results/*.png` | las cuatro gráficas |
+| `README.md` | objetivo, metodología, resultados y conclusiones |
+| `data/numeros.txt` | datos (no versionado; se regenera con semilla 42 al ejecutar) |
+
+Para revisar la entrega sin ejecutar nada: abrir `results/taller_ordenamiento.html`.
+Para reproducir el experimento: seguir la sección 4.
