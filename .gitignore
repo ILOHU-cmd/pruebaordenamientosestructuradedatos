@@ -13,6 +13,9 @@ __pycache__/
 nohup.out
 *.log
 
+# Paquete de entrega generado localmente
+*.zip
+
 # Datos regenerables (semilla 42 -> reproducible)
 data/numeros.txt
 
